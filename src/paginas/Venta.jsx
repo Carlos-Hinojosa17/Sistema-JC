@@ -58,6 +58,7 @@ export default function Ventas() {
   return (
     <div className="venta-container">
       <h1 className="venta-titulo">🛒 Página de Ventas</h1>
+      {/* Selector de cliente */}
       <ClienteSelector cliente={cliente} setCliente={setCliente} />
       <div className="venta-flex">
         {/* Sección productos */}
