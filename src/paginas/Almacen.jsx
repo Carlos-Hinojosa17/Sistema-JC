@@ -215,7 +215,7 @@ export default function Almacen() {
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="btn btn-sm btn-primary">Editar</button>
+                    <button className="btn btn-sm btn-primary">Nuevo ingreso</button>
                   </td>
                 </tr>
               ))

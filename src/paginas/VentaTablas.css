@@ -1,0 +1,97 @@
+.venta-container {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.venta-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #2563eb;
+  letter-spacing: 1px;
+}
+
+.venta-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .venta-flex {
+    flex-direction: row;
+  }
+}
+
+.venta-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px #0001;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 320px;
+}
+
+.venta-titulo-tabla {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #059669;
+}
+
+.venta-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f1f5f9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.venta-table th, .venta-table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+}
+.venta-table th {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+}
+.venta-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+.venta-table input[type="number"] {
+  width: 60px;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  border: 1px solid #cbd5e1;
+  text-align: center;
+}
+.venta-btn-agregar {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.venta-btn-agregar:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+.venta-btn-agregar:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+.venta-stock-bajo {
+  color: #dc2626;
+  font-weight: bold;
+}
+.venta-stock-medio {
+  color: #ca8a04;
+  font-weight: bold;
+}
+.venta-stock-alto {
+  color: #16a34a;
+  font-weight: bold;
+}
