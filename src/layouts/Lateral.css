@@ -1,0 +1,13 @@
+.sidebar-link {
+  color: #000000 !important;
+  font-weight: 500;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-link:hover, .sidebar-link.active {
+  background: #ffc107 !important;
+  color: #fdfdfd !important;
+}
+.lateral-logo {
+  width: 100%;
+}

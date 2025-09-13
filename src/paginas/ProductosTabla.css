@@ -1,0 +1,43 @@
+/* Lupa en el buscador de productos/clientes */
+.buscador-productos {
+  position: relative;
+}
+.lupa-buscador {
+  position: absolute;
+  top: 50%;
+  left: 1.2rem;
+  transform: translateY(-50%);
+  color: #198754;
+  font-size: 1.3rem;
+  z-index: 2;
+  pointer-events: none;
+}
+.encabezado-productos {
+  background: linear-gradient(90deg, #e9f7ef 0%, #f8fafc 100%);
+  box-shadow: 0 2px 16px #19875422;
+  border-radius: 1.5rem;
+  border: 2px solid #b6e2d3;
+}
+
+.tabla-productos {
+  border-radius: 1rem !important;
+  overflow: hidden;
+  box-shadow: 0 4px 24px #ffc10733;
+}
+.tabla-productos thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #6792bd;
+  color: #fff;
+}
+.table-row-custom:hover {
+  background: #ffe6e6 !important;
+  transition: background 0.2s;
+}
+.tabla-productos th, .tabla-productos td {
+  vertical-align: middle;
+}
+.tabla-productos td.text-end {
+  font-weight: 500;
+}
