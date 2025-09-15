@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./ProductosTabla.css";
 
@@ -6,6 +6,15 @@ export default function Clientes() {
   const [busqueda, setBusqueda] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [nuevoCliente, setNuevoCliente] = useState({ nombre: "", documento: "", telefono: "", estado: true });
+  const [clientes, setClientes] = useState([]);
+  const [pagina, setPagina] = useState(1);
+  const porPagina = 10;
+
+  useEffect(() => {
+    fetch(import.meta.env.VITE_API_URL + "/api/clientes")
+      .then(res => res.json())
+      .then(data => setClientes(data));
+  }, []);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -17,26 +26,30 @@ export default function Clientes() {
       setNuevoCliente({ ...nuevoCliente, [name]: value });
     }
   };
-  const handleRegistrar = e => {
+  const handleRegistrar = async (e) => {
     e.preventDefault();
+    try {
+      const res = await fetch(import.meta.env.VITE_API_URL + "/api/clientes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(nuevoCliente)
+      });
+      if (res.ok) {
+        const clienteCreado = await res.json();
+        setClientes(prev => [...prev, clienteCreado]);
+      }
+    } catch (err) {
+      // Puedes mostrar un mensaje de error aquí
+    }
     handleClose();
     setNuevoCliente({ nombre: "", documento: "", telefono: "", estado: true });
   };
 
-  // Simulación de clientes
-  const clientes = Array.from({ length: 20 }, (_, i) => ({
-    id: i + 1,
-    nombre: `Cliente ${i + 1}`,
-    documento: `DNI${10000000 + i}`,
-    telefono: `999000${i.toString().padStart(2, "0")}`,
-    estado: i % 2 === 0
-  }));
+  // Filtrado y paginación
   const clientesFiltrados = clientes.filter(c =>
     c.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     c.documento.toLowerCase().includes(busqueda.toLowerCase())
   );
-  const [pagina, setPagina] = useState(1);
-  const porPagina = 10;
   const totalPaginas = Math.ceil(clientesFiltrados.length / porPagina);
   const clientesPagina = clientesFiltrados.slice((pagina - 1) * porPagina, pagina * porPagina);
   const cambiarPagina = (nueva) => {
